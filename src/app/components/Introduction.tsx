@@ -1,6 +1,6 @@
 "use client";
 
-import { FaVolumeHigh } from "react-icons/fa6";
+import { FaVolumeUp } from "react-icons/fa";
 import { motion, Variants } from "framer-motion";
 
 const fadeInUp: Variants = {
@@ -44,7 +44,7 @@ const Introduction = () => {
             className="ml-3 text-xl text-white hover:scale-125 hover:text-[#FF5F1F] transition-all cursor-pointer"
             aria-label="Play pronunciation"
           >
-            <FaVolumeHigh />
+            <FaVolumeUp />
           </button>
         </div>
         <span className="font-thin text-2xl text-white/60">
