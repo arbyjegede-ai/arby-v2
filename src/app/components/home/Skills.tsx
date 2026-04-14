@@ -44,7 +44,7 @@ const SkillsSection = () => {
           <div className="flex gap-4 items-stretch">
             <div className="block md:hidden w-1.5 bg-[#FF5F1F] flex-shrink-0"></div>
 
-            <p className="text-gray-400 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-xl">
+            <p className="text-gray-400 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-full">
               I am a product designer with 5 years of professional work
               experience from creating visually aesthetically pleasing designs.
               My goal is...
@@ -68,7 +68,7 @@ const SkillsSection = () => {
 
           <div className="flex gap-4 items-stretch">
             <div className="block md:hidden w-1.5 bg-[#FF5F1F] flex-shrink-0"></div>
-            <p className="text-gray-400 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-xl">
+            <p className="text-gray-400 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-full">
               I am a self taught design thinking facilitator with over 3 years
               of professional experience.
             </p>
@@ -91,7 +91,7 @@ const SkillsSection = () => {
 
           <div className="flex gap-4 items-stretch">
             <div className="block md:hidden w-1.5 bg-[#FF5F1F] flex-shrink-0"></div>
-            <p className="text-gray-400 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-xl">
+            <p className="text-gray-400 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-full">
               Motion designer with 2 years of experience creating purposeful
               animations that bring digital products and ideas to life.
             </p>

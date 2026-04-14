@@ -28,7 +28,7 @@ const Introduction = () => {
       animate="show"
       className="mb-10 flex flex-col gap-4 lg:flex-row lg:justify-between"
     >
-      <div className="lg:text-[3rem] md:text-[2.5rem] sm:text-[2rem] text-[1.6rem] block tracking-wide font-normal font-space text-white/70 mb-4">
+      <div className="lg:text-[3rem] md:text-[2.5rem] sm:text-[2rem] text-[1.6rem] block tracking-wide font-normal font-space text-white/80 mb-4">
         <span>I am Abisola Jegede,</span>
         <div>a Jack of all trades</div>
         <div>and master of ...</div>

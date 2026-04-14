@@ -8,17 +8,18 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const navLinks = [
-    { name: "Resume", href: "https://www.figma.com/...", isExternal: true },
+    { name: "Resume", href: "/Resume" },
+    { name: "Portfolio", href: "/portfolio" },
     { name: "About", href: "/about" },
     { name: "Blog", href: "/blog" },
-    { name: "Management", href: "/Management" },
+    { name: "Resources", href: "/resources" },
+    { name: "Playground", href: "/playground" },
   ];
-
-  const pathname = usePathname();
 
   return (
     <header className="font-space flex justify-between px-6 items-center pb-10 relative z-50">
@@ -26,41 +27,29 @@ const Header = () => {
         <Link href="/">Arby</Link>
       </h1>
 
+      {/* Desktop Navigation */}
       <nav className="hidden md:block">
-        <ul className="flex gap-10 text-lg text-gray-400">
+        <ul className="flex gap-10 text-sm text-gray-400">
           {navLinks.map((link) => {
-            const isActive =
-              !link.isExternal &&
-              pathname.toLowerCase() === link.href.toLowerCase();
+            // Check if the current path matches the link href
+            const isActive = pathname.toLowerCase() === link.href.toLowerCase();
 
             return (
-              <li
-                key={link.name}
-                className="relative flex flex-col items-center"
-              >
-                {link.isExternal ? (
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    className="hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </a>
-                ) : (
-                  <Link
-                    href={link.href}
-                    className={`transition-colors ${
-                      isActive ? "text-[#FF5F1F]" : "hover:text-white"
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
-                )}
+              <li key={link.name} className="relative flex flex-col items-center">
+                <Link
+                  href={link.href}
+                  className={`transition-colors duration-300 ${
+                    isActive ? "text-[#FF5F1F]" : "hover:text-white"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+                {/* Active Indicator (Dot) */}
                 {isActive && (
                   <motion.span
                     layoutId="activeDot"
-                    className="absolute -bottom-3 w-2 h-2 bg-[#FF5F1F] rounded-full"
+                    className="absolute -bottom-3 w-1.5 h-1.5 bg-[#FF5F1F] rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
               </li>
@@ -86,6 +75,7 @@ const Header = () => {
         </button>
       </div>
 
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
           <>
@@ -102,34 +92,39 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-[60%] sm:w-[50%] bg-[#151515] border-l border-white/10 p-10 pt-32 z-[55] shadow-2xl"
+              className="fixed top-0 right-0 h-full w-[70%] bg-[#151515] border-l border-white/10 p-10 pt-32 z-[55] shadow-2xl"
             >
               <ul className="flex flex-col gap-8 text-2xl text-gray-300">
-                {navLinks.map((link) => (
-                  <li
-                    key={link.name}
-                    className="hover:text-[#FF5F1F] transition-colors"
-                  >
-                    {link.isExternal ? (
-                      <a
+                {navLinks.map((link) => {
+                  const isActive = pathname.toLowerCase() === link.href.toLowerCase();
+
+                  return (
+                    <li key={link.name} className="relative flex items-center gap-4">
+                      <Link
                         href={link.href}
-                        target="_blank"
-                        rel="noreferrer noopener"
                         onClick={toggleMenu}
+                        className={`transition-colors duration-300 ${
+                          isActive ? "text-[#FF5F1F]" : "hover:text-white"
+                        }`}
                       >
                         {link.name}
-                      </a>
-                    ) : (
-                      <Link href={link.href} onClick={toggleMenu}>
-                        {link.name}
                       </Link>
-                    )}
-                  </li>
-                ))}
-                <li>
+                      
+                      {/* Mobile Active Indicator (Dot) */}
+                      {isActive && (
+                        <motion.span
+                          layoutId="activeDotMobile"
+                          className="w-2 h-2 bg-[#FF5F1F] rounded-full"
+                        />
+                      )}
+                    </li>
+                  );
+                })}
+                <li className="pt-4">
                   <a
                     href="mailto:arby.jegede@gmail.com"
-                    className="text-[#FF5F1F] font-bold"
+                    className="text-[#FF5F1F] font-bold text-xl"
+                    onClick={toggleMenu}
                   >
                     Contact me
                   </a>
