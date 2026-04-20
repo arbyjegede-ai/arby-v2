@@ -5,7 +5,7 @@ import Socials from "@/components/Socials";
 
 export default function Home() {
   return (
-    <div className="w-[90%] mx-auto py-8">
+    <div className="w-[85%] mx-auto py-8">
       <Header />
       <main>
         <Introduction />

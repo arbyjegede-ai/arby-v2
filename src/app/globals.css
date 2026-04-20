@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
     --color-brown: 16deg 71% 27%;
@@ -19,4 +18,26 @@
     @apply max-w-full h-auto;
   }
 
+}
+
+* {
+  cursor: none;
+}
+
+@media (pointer: fine) {
+  * {
+    cursor: none;
+  }
+}
+html, body {
+  cursor: none !important;
+}
+
+a, button, [role="button"] {
+  cursor: none !important;
+}
+
+.custom-cursor-container {
+  pointer-events: none !important;
+  user-select: none !important;
 }

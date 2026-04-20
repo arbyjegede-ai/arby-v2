@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from 'next/font/google';
+import { Space_Grotesk } from "next/font/google";
+import CustomCursor from "../../Components/ui/CustomCursor";
 import "@/globals.css";
 
 export const metadata: Metadata = {
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
 };
 
 const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  variable: '--font-space-grotesk', 
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
 });
 
 export default function RootLayout({
@@ -18,11 +19,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html 
-    lang="en"
-    className={`${spaceGrotesk.variable}`}
-    >
-      <body className="bg-[hsl(204,8%,12%)] font-sans text-white overflow-x-hidden">{children}</body>
+    <html lang="en" className={`${spaceGrotesk.variable}`}>
+      <body className="bg-[hsl(204,8%,12%)] font-sans text-white overflow-x-hidden">
+        <div className="relative isolate z-0">
+        {children}
+        </div>
+      <CustomCursor />
+      </body>
     </html>
   );
 }

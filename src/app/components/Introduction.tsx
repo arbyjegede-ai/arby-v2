@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { FaVolumeUp } from "react-icons/fa";
 import { motion, Variants } from "framer-motion";
 
@@ -13,41 +14,158 @@ const fadeInUp: Variants = {
 };
 
 const Introduction = () => {
-  const playPronunciation = () => {
-    const audio = new Audio("/audio/JUBA.mp3");
+  // Intro lines state
+  const [line1, setLine1] = useState("");
+  const [line2, setLine2] = useState("");
+  const [line3, setLine3] = useState("");
+  
+  // Rotating skills state
+  const [skillText, setSkillText] = useState("");
+  const [skillIndex, setSkillIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [introFinished, setIntroFinished] = useState(false);
 
-    audio.play().catch((error) => {
-      console.error("Playback failed:", error);
-    });
+  const lines = [
+    "I am Abisola Jegede,",
+    "a Jack of all trades",
+    "and master of "
+  ];
+  const skills = ["Product Design", "Design Thinking Facilitation", "Motion Design"];
+
+  useEffect(() => {
+    const typeLine = async (text: string, setter: (val: string) => void) => {
+      for (let i = 0; i <= text.length; i++) {
+        setter(text.slice(0, i));
+        await new Promise((resolve) => setTimeout(resolve, 80));
+      }
+    };
+
+    const runSequence = async () => {
+      await typeLine(lines[0], setLine1);
+      await typeLine(lines[1], setLine2);
+      await typeLine(lines[2], setLine3);
+      setIntroFinished(true);
+    };
+
+    runSequence();
+  }, []);
+
+  useEffect(() => {
+    if (!introFinished) return;
+
+    const currentSkill = skills[skillIndex];
+    const typingSpeed = isDeleting ? 50 : 120;
+
+    const timeout = setTimeout(() => {
+      if (!isDeleting && skillText === currentSkill) {
+        setTimeout(() => setIsDeleting(true), 2000);
+      } else if (isDeleting && skillText === "") {
+        setIsDeleting(false);
+        setSkillIndex((prev) => (prev + 1) % skills.length);
+      } else {
+        setSkillText(
+          isDeleting
+            ? currentSkill.slice(0, skillText.length - 1)
+            : currentSkill.slice(0, skillText.length + 1)
+        );
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [skillText, isDeleting, skillIndex, introFinished]);
+  
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const playPronunciation = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio("/assets/audio/ah-bi-soh-lah.mp4");
+      audioRef.current.addEventListener("ended", () => {
+        setIsPlaying(false);
+      });
+    }
+    audioRef.current.currentTime = 0;
+    audioRef.current.play();
+
+    setIsPlaying(true);
   };
+
+  const Cursor = () => (
+    <motion.span
+      animate={{ opacity: [0, 1, 0] }}
+      transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
+      className="inline-block ml-1 w-[3px] h-[0.8em] bg-[#FF5F1F] translate-y-1" 
+    />
+  );
 
   return (
     <motion.section
       variants={fadeInUp}
       initial="hidden"
       animate="show"
-      className="mb-10 flex flex-col gap-4 lg:flex-row lg:justify-between"
+      className="mb-10 flex flex-col gap-4 lg:flex-row lg:justify-between items-start"
     >
-      <div className="lg:text-[3rem] md:text-[2.5rem] sm:text-[2rem] text-[1.6rem] block tracking-wide font-normal font-space text-white/80 mb-4">
-        <span>I am Abisola Jegede,</span>
-        <div>a Jack of all trades</div>
-        <div>and master of ...</div>
-      </div>
-      <div>
-        <div className="text-[15px] flex items-center my-2">
-          <span className="font-mono xs:text-sm sm:text-sm md:text-md lg:text-xl text-white/80">
-            Pronunciation{" "}
-          </span>
-
-          <button
-            onClick={playPronunciation}
-            className="ml-3 text-xl text-white hover:scale-125 hover:text-[#FF5F1F] transition-all cursor-pointer"
-            aria-label="Play pronunciation"
-          >
-            <FaVolumeUp />
-          </button>
+      <div className="block lg:text-[2.8rem] md:text-[2.5rem] sm:text-[2rem] text-[1.6rem] tracking-wide font-normal font-space text-white/80 mb-4 leading-[1.2]">
+        <div className="min-h-[1.2em]">
+          {line1}
+          {!line2 && <Cursor />}
         </div>
-        <span className="font-thin text-2xl text-white/60">
+        
+        <div className="min-h-[1.2em]">
+          {line2}
+          {line2 && !line3 && <Cursor />}
+        </div>
+        
+        <div className="min-h-[1.2em] whitespace-nowrap">
+          <span>{line3}</span>
+          <span className="text-[#FF5F1F] font-thin">
+            {skillText}
+          </span>
+          {line3 && <Cursor />}
+        </div>
+      </div>
+
+      <div className="lg:text-right">
+        <div className="text-[15px] flex items-center lg:justify-end my-2">
+          <span className="font-mono xs:text-sm sm:text-sm md:text-md lg:text-sm text-white/80">
+            Pronunciation
+          </span>
+    <button
+      onClick={playPronunciation}
+      aria-label="Play pronunciation"
+      className="relative ml-3 flex items-center justify-center text-xl text-white cursor-pointer"
+    >
+      {/* Ripple ring */}
+      {isPlaying && (
+        <motion.span
+          className="absolute rounded-full border border-[#FF5F1F]"
+          initial={{ scale: 1, opacity: 0.6 }}
+          animate={{ scale: 2.4, opacity: 0 }}
+          transition={{
+            duration: 1.1,
+            repeat: Infinity,
+            ease: "easeOut",
+          }}
+          style={{
+            width: 32,
+            height: 32,
+          }}
+        />
+      )}
+
+      {/* Icon */}
+      <motion.span
+        animate={{
+          scale: isPlaying ? 1.25 : 1,
+          color: isPlaying ? "#FF5F1F" : "#ffffff",
+        }}
+        transition={{ duration: 0.25 }}
+      >
+        <FaVolumeUp />
+      </motion.span>
+    </button>
+        </div>
+        <span className="font-thin text-2xl text-white block">
           /Ah: bi: soh: la/
         </span>
       </div>

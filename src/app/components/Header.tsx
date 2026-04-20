@@ -22,12 +22,10 @@ const Header = () => {
   ];
 
   return (
-    <header className="font-space flex justify-between px-6 items-center pb-10 relative z-50">
+    <header className="font-space flex justify-between px-0 items-center pb-20 relative">
       <h1 className="border-b-[3px] border-[#FF5F1F] inline-block sm:text-md lg:text-2xl font-bold text-white">
         <Link href="/">Arby</Link>
       </h1>
-
-      {/* Desktop Navigation */}
       <nav className="hidden md:block">
         <ul className="flex gap-10 text-sm text-gray-400">
           {navLinks.map((link) => {
@@ -35,7 +33,10 @@ const Header = () => {
             const isActive = pathname.toLowerCase() === link.href.toLowerCase();
 
             return (
-              <li key={link.name} className="relative flex flex-col items-center">
+              <li
+                key={link.name}
+                className="relative flex flex-col items-center"
+              >
                 <Link
                   href={link.href}
                   className={`transition-colors duration-300 ${
@@ -96,10 +97,14 @@ const Header = () => {
             >
               <ul className="flex flex-col gap-8 text-2xl text-gray-300">
                 {navLinks.map((link) => {
-                  const isActive = pathname.toLowerCase() === link.href.toLowerCase();
+                  const isActive =
+                    pathname.toLowerCase() === link.href.toLowerCase();
 
                   return (
-                    <li key={link.name} className="relative flex items-center gap-4">
+                    <li
+                      key={link.name}
+                      className="relative flex items-center gap-4"
+                    >
                       <Link
                         href={link.href}
                         onClick={toggleMenu}
@@ -109,7 +114,7 @@ const Header = () => {
                       >
                         {link.name}
                       </Link>
-                      
+
                       {/* Mobile Active Indicator (Dot) */}
                       {isActive && (
                         <motion.span

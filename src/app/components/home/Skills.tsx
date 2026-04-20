@@ -30,7 +30,7 @@ const SkillsSection = () => {
       >
         <motion.div
           variants={fadeInUp}
-          className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10 w-full"
+          className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-10 w-full"
         >
           <div className="relative group w-fit">
             <div className="hidden md:block absolute top-0 right-3 w-1.5 h-full bg-[#FF5F1F] z-0 transition-all duration-300 ease-out group-hover:translate-x-8"></div>
@@ -44,7 +44,7 @@ const SkillsSection = () => {
           <div className="flex gap-4 items-stretch">
             <div className="block md:hidden w-1.5 bg-[#FF5F1F] flex-shrink-0"></div>
 
-            <p className="text-gray-400 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-full">
+            <p className="text-gray-200 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-full">
               I am a product designer with 5 years of professional work
               experience from creating visually aesthetically pleasing designs.
               My goal is...
@@ -68,7 +68,7 @@ const SkillsSection = () => {
 
           <div className="flex gap-4 items-stretch">
             <div className="block md:hidden w-1.5 bg-[#FF5F1F] flex-shrink-0"></div>
-            <p className="text-gray-400 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-full">
+            <p className="text-gray-200 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-full">
               I am a self taught design thinking facilitator with over 3 years
               of professional experience.
             </p>
@@ -91,7 +91,7 @@ const SkillsSection = () => {
 
           <div className="flex gap-4 items-stretch">
             <div className="block md:hidden w-1.5 bg-[#FF5F1F] flex-shrink-0"></div>
-            <p className="text-gray-400 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-full">
+            <p className="text-gray-200 tracking-wider font-light text-lg md:text-xl leading-relaxed max-w-full">
               Motion designer with 2 years of experience creating purposeful
               animations that bring digital products and ideas to life.
             </p>
