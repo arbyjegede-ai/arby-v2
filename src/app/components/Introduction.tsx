@@ -103,7 +103,7 @@ const Introduction = () => {
       variants={fadeInUp}
       initial="hidden"
       animate="show"
-      className="mb-10 flex flex-col gap-4 lg:flex-row lg:justify-between items-start"
+      className="mb-10 mx-16 flex flex-col gap-4 lg:flex-row lg:justify-between items-start"
     >
       <div className="block lg:text-[2.8rem] md:text-[2.5rem] sm:text-[2rem] text-[1.6rem] tracking-wide font-normal font-space text-white/80 mb-4 leading-[1.2]">
         <div className="min-h-[1.2em]">

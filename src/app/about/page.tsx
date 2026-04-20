@@ -24,12 +24,7 @@ const About = () => {
                         music and <span className="font-bold">games</span>. During my free time, I volunteer as
                         a <span className="font-bold">Community Manager</span> for a gaming Community called Bold.” Wanna know what
                         Bold does?
-                        {" "}<a
-                            href="https://www.linkedin.com/company/bold-community/posts/?feedView=all"
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            className="hidden font-bold underline md:absolute md:right-0 md:-bottom-28 md:font-medium md:bg-orange md:w-[143px] md:h-[143px] md:rounded-full md:group-hover:grid md:place-items-center md:no-underline md:text-2xl md:not-italic"
-                        >Learn more</a>
+                        {" "}
                     </blockquote>
                     <div className="flex flex-col items-center my-10 md:flex-row">
                         <Image

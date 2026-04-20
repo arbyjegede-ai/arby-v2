@@ -16,7 +16,7 @@ const SkillsSection = () => {
   return (
     <section className="font-space flex flex-col justify-center items-center py-10 px-4 md:px-0">
       <motion.div
-        className="w-full max-w-6xl flex flex-col gap-16 md:gap-12"
+        className="w-full max-w-[91%] flex flex-col gap-16 md:gap-12"
         initial="hidden"
         animate="show"
         variants={{
@@ -35,7 +35,7 @@ const SkillsSection = () => {
           <div className="relative group w-fit">
             <div className="hidden md:block absolute top-0 right-3 w-1.5 h-full bg-[#FF5F1F] z-0 transition-all duration-300 ease-out group-hover:translate-x-8"></div>
 
-            <Link href="/product-design">
+            <Link href="/portfolio">
               <button className="relative z-10 bg-[#1a1e20] border border-white/20 hover:border-white/50 text-white text-lg md:text-xl lg:text-2xl rounded-lg py-5 px-6 md:py-9 md:px-14 whitespace-normal md:whitespace-nowrap hover:shadow-neon transition-all duration-500 w-full md:w-fit">
                 Product Design
               </button>

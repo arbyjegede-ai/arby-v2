@@ -8,7 +8,9 @@ export default function CustomCursor() {
   const [mounted, setMounted] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [cursorVariant, setCursorVariant] = useState<"default" | "impact">("default");
+  const [cursorVariant, setCursorVariant] = useState<"default" | "impact">(
+    "default",
+  );
 
   const cursorX = useSpring(0, { stiffness: 500, damping: 28 });
   const cursorY = useSpring(0, { stiffness: 500, damping: 28 });
@@ -26,13 +28,16 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const path = e.composedPath() as HTMLElement[];
-      
-      const isImpact = path.some(el => el.dataset?.cursorImpact !== undefined);
-      const isHoverable = path.some(el => 
-        el.tagName === "A" || 
-        el.tagName === "BUTTON" || 
-        el.dataset?.cursorHover !== undefined ||
-        el.getAttribute?.('role') === 'button'
+
+      const isImpact = path.some(
+        (el) => el.dataset?.cursorImpact !== undefined,
+      );
+      const isHoverable = path.some(
+        (el) =>
+          el.tagName === "A" ||
+          el.tagName === "BUTTON" ||
+          el.dataset?.cursorHover !== undefined ||
+          el.getAttribute?.("role") === "button",
       );
 
       if (isImpact) {
@@ -71,17 +76,33 @@ export default function CustomCursor() {
           className="absolute rounded-full bg-white"
           style={{ x: "-50%", y: "-50%" }}
           animate={{
-            width: isHovering ? (cursorVariant === "impact" ? 70 : 50) : 10,
-            height: isHovering ? (cursorVariant === "impact" ? 70 : 50) : 10,
-            backgroundColor: "rgba(255, 255, 255, 0.5)", 
-            border: cursorVariant === "impact" ? "1px solid rgba(255,255,255,0.5)" : "none",
+            width: isHovering ? (cursorVariant === "impact" ? 70 : 50) : 20,
+            height: isHovering ? (cursorVariant === "impact" ? 70 : 50) : 20,
+            backgroundColor: "rgba(255, 255, 255, 0.5)",
+            border:
+              cursorVariant === "impact"
+                ? "1px solid rgba(255,255,255,0.5)"
+                : "none",
           }}
           transition={{ duration: 0.2, ease: "backOut" }}
         />
         <motion.div
-          className="absolute rounded-full bg-white"
-          style={{ x: "-50%", y: "-50%" }}
-          animate={{ width: isHovering ? 6 : 4, height: isHovering ? 6 : 4 }}
+          className="absolute rounded-full"
+          style={{
+            x: "-50%",
+            y: "-50%",
+            backgroundColor: "rgba(255,255,255,0.5)",
+            mixBlendMode: "difference",
+          }}
+          animate={{
+            width: isHovering ? (cursorVariant === "impact" ? 70 : 50) : 10,
+            height: isHovering ? (cursorVariant === "impact" ? 70 : 50) : 10,
+            border:
+              cursorVariant === "impact"
+                ? "1px solid rgba(255,255,255,0.5)"
+                : "none",
+          }}
+          transition={{ duration: 0.2, ease: "backOut" }}
         />
       </motion.div>
 
@@ -91,16 +112,16 @@ export default function CustomCursor() {
       >
         <motion.div
           className="absolute rounded-full border border-white/20"
-          style={{ x: "-50%", y: "-50%" }}
+          style={{ x: "-50%", y: "-50%", mixBlendMode: "difference" }}
           animate={{
             width: isHovering ? 90 : 30,
             height: isHovering ? 90 : 30,
             opacity: isHovering ? 1 : 0.4,
           }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
         />
       </motion.div>
     </div>,
-    document.body
+    document.body,
   );
 }

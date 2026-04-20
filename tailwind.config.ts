@@ -26,6 +26,7 @@ const config: Config = {
         "xs": "480px"
       },
       fontFamily: {
+        manrope: ['var(--font-manrope)', 'sans-serif'],
         sans: ["var(--font-sf-pro-display)", ...defaultTheme.fontFamily.sans],
         space: ['var(--font-space-grotesk)', 'sans-serif'],
       },
