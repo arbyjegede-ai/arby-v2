@@ -329,7 +329,7 @@ const TransturaPage = () => {
             </p>
             <div className="w-full mb-10">
               <img
-                src="/assets/images/expore.png"
+                src="/assets/images/explore.png"
                 alt="Wireframe Sketches"
                 className="w-full object-contain"
               />
