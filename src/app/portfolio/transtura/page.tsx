@@ -551,7 +551,7 @@ const TransturaPage = () => {
               className="group inline-block transition-transform duration-300 hover:scale-110"
             >
               <img
-                src="/assets/images/spenditure-btn.png"
+                src="/assets/images/glee-btn.png"
                 alt="Previous Project"
                 className="w-64 transition-all duration-300 group-hover:brightness-110"
               />
