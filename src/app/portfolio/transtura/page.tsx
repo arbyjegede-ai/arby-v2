@@ -400,9 +400,9 @@ const TransturaPage = () => {
                 The redesigned booking experience introduces continuous feedback at critical moments.
               </p>
             </div>
-            <div className="w-full bg-[#FACC15] py-16 px-4 flex justify-center mb-10">
+            <div className="w-full bg-[#fed800] py-16 px-4 flex justify-center mb-10">
               <img
-                src="/assets/images/booking flow.png"
+                src="/assets/images/booking-flow.png"
                 alt="Booking Flow Screens"
                 className="w-full max-w-6xl object-contain"
               />
