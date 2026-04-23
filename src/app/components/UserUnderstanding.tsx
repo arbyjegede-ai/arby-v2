@@ -5,7 +5,7 @@ function UserUnderstanding() {
     <div>
         <section className="bg-[#fcf3f6] py-20 px-4 xl:px-0">
   <div className="max-w-5xl mx-auto">
-    <h2 className="text-2xl md:text-3xl font-bold mb-10 text-gray-900">
+    <h2 className="text-2xl md:text-3xl text-right font-bold mb-10 text-gray-900">
       Understanding the User
     </h2>
 

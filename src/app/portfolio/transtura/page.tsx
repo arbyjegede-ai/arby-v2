@@ -178,7 +178,6 @@ const TransturaPage = () => {
             ></h3>
           </motion.section>
 
-          {/* Research & Validation */}
           <motion.section
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -271,7 +270,7 @@ const TransturaPage = () => {
               </p>
             </div>
             <img
-              src="/assets/images/exp-1.png"
+              src="/assets/images/exp-1-1.svg"
               alt="Existing Experience Flow"
               className="w-full max-w-3xl object-contain"
             />
@@ -290,7 +289,7 @@ const TransturaPage = () => {
             </p>
             <div className="w-full flex justify-center mb-16">
               <img
-                src="/assets/images/exp-2.png"
+                src="/assets/images/exp-2-2.svg"
                 alt="New Booking Flow"
                 className="w-full max-w-4xl object-contain rounded-2xl shadow-lg"
               />
@@ -317,7 +316,6 @@ const TransturaPage = () => {
             </p>
           </motion.section>
 
-          {/* Exploration */}
           <motion.section
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -355,7 +353,7 @@ const TransturaPage = () => {
               </p>
             </div>
             <img
-              src="/assets/images/structure.png"
+              src="/assets/images/structure.svg"
               alt="Digital Wireframes"
               className="w-full max-w-3xl object-contain mb-10"
             />
@@ -502,8 +500,6 @@ const TransturaPage = () => {
               </p>
             </div>
           </motion.section>
-
-          {/* Outcome & Reflection */}
           <section className="pt-20 px-4 xl:px-0">
             <div className="space-y-16 max-w-4xl mx-auto">
               <motion.section

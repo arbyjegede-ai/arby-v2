@@ -550,7 +550,7 @@ const SpenditurePage = () => {
               <motion.div
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: 0.5 }}
                 variants={{
                   visible: { transition: { staggerChildren: 0.2 } },
                 }}
@@ -617,7 +617,7 @@ const SpenditurePage = () => {
                     visible: { opacity: 1, y: 0, transition: bounceTransition },
                   }}
                   src={`/assets/images/${imgSrc}`}
-                  className="w-full shadow-md rounded-3xl"
+                  className="w-full"
                 />
               ))}
             </motion.div>

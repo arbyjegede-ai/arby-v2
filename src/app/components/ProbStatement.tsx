@@ -27,22 +27,21 @@ const ProblemStatementCards = () => {
             key={index} 
             className="flex-1 bg-[#f1f9f1] border border-[#c3e6cb] rounded-[2rem] px-6 py-14 shadow-sm"
           >
-            {/* Header Section */}
             <div className="mb-4">
-              <h3 className="font-bold text-md text-gray-800 tracking-tight uppercase">
+              <h3 className="font-bold text-xl text-gray-800 tracking-tight uppercase">
                 {card.title}
               </h3>
-              <p className="text-md text-gray-800 mt-1">
+              <p className="text-lg text-gray-800 mt-1">
                 {card.description}
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-md text-gray-800 tracking-tight uppercase mt-4 mb-2">
+              <h4 className="font-bold text-lg text-gray-800 tracking-tight uppercase mt-4 mb-2">
                 IMPACT
               </h4>
               <ul className="space-y-1">
                 {card.impacts.map((impact, i) => (
-                  <li key={i} className="text-sm text-gray-700 leading-snug">
+                  <li key={i} className="text-md text-gray-700 leading-snug">
                     {impact}
                   </li>
                 ))}
