@@ -67,7 +67,6 @@ export default function CustomCursor() {
 
   return createPortal(
     <div className="custom-cursor-container fixed inset-0 z-[999999] pointer-events-none">
-      {/* MAIN CURSOR CORE */}
       <motion.div
         className="absolute top-0 left-0 mix-blend-difference"
         style={{ x: cursorX, y: cursorY }}
@@ -78,7 +77,7 @@ export default function CustomCursor() {
           animate={{
             width: isHovering ? (cursorVariant === "impact" ? 70 : 50) : 20,
             height: isHovering ? (cursorVariant === "impact" ? 70 : 50) : 20,
-            backgroundColor: "rgba(255, 255, 255, 0.5)",
+            backgroundColor: "rgba(255, 91, 0, 0.5)",
             border:
               cursorVariant === "impact"
                 ? "1px solid rgba(255,255,255,0.5)"
@@ -118,7 +117,7 @@ export default function CustomCursor() {
             height: isHovering ? 90 : 30,
             opacity: isHovering ? 1 : 0.4,
           }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
         />
       </motion.div>
     </div>,

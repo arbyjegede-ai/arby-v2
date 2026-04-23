@@ -49,7 +49,7 @@ const projects: Project[] = [
     type: "Web application",
     description: "Designing a centralized forms system to unify fragmented applications.",
     image: "/assets/images/forms.png",
-    href: "/portfolio/forms",
+    href: "/portfolio/nithub-forms",
   },
   {
     title: "Transtura",
@@ -123,7 +123,7 @@ export default function PortfolioPage() {
   };
 
   return (
-    <main className="mx-auto py-8 font-space min-h-screen relative">
+    <main className="mx-auto py-8 mt-10 font-space min-h-screen relative">
       <Header />
 
       <section className="flex flex-col lg:flex-row justify-between items-start gap-12 mx-16 mb-24 mt-16">
@@ -158,7 +158,6 @@ export default function PortfolioPage() {
         <Socials />
       </footer>
 
-      {/* POPUP MODAL */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div

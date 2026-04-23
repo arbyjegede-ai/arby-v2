@@ -18,7 +18,7 @@ const Introduction = () => {
   const [line1, setLine1] = useState("");
   const [line2, setLine2] = useState("");
   const [line3, setLine3] = useState("");
-  
+
   // Rotating skills state
   const [skillText, setSkillText] = useState("");
   const [skillIndex, setSkillIndex] = useState(0);
@@ -28,9 +28,13 @@ const Introduction = () => {
   const lines = [
     "I am Abisola Jegede,",
     "a Jack of all trades",
-    "and master of "
+    "and master of ",
   ];
-  const skills = ["Product Design", "Design Thinking Facilitation", "Motion Design"];
+  const skills = [
+    "Product Design",
+    "Design Thinking Facilitation",
+    "Motion Design",
+  ];
 
   useEffect(() => {
     const typeLine = async (text: string, setter: (val: string) => void) => {
@@ -66,14 +70,14 @@ const Introduction = () => {
         setSkillText(
           isDeleting
             ? currentSkill.slice(0, skillText.length - 1)
-            : currentSkill.slice(0, skillText.length + 1)
+            : currentSkill.slice(0, skillText.length + 1),
         );
       }
     }, typingSpeed);
 
     return () => clearTimeout(timeout);
   }, [skillText, isDeleting, skillIndex, introFinished]);
-  
+
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -94,7 +98,7 @@ const Introduction = () => {
     <motion.span
       animate={{ opacity: [0, 1, 0] }}
       transition={{ duration: 0.8, repeat: Infinity, ease: "linear" }}
-      className="inline-block ml-1 w-[3px] h-[0.8em] bg-[#FF5F1F] translate-y-1" 
+      className="inline-block ml-1 w-[3px] h-[0.8em] bg-[#FF5F1F] translate-y-1"
     />
   );
 
@@ -103,25 +107,25 @@ const Introduction = () => {
       variants={fadeInUp}
       initial="hidden"
       animate="show"
-      className="mb-10 mx-16 flex flex-col gap-4 lg:flex-row lg:justify-between items-start"
+      className="mb-10 mt-20 mx-16 flex flex-col gap-4 lg:flex-row lg:justify-between items-start"
     >
-      <div className="block lg:text-[2.8rem] md:text-[2.5rem] sm:text-[2rem] text-[1.6rem] tracking-wide font-normal font-space text-white/80 mb-4 leading-[1.2]">
+      <div className="block lg:text-[2.8rem] md:text-[2.5rem] sm:text-[2.5rem] text-[1.6rem] tracking-wide font-normal font-space text-white/80 mb-4 leading-[1.2]">
         <div className="min-h-[1.2em]">
           {line1}
           {!line2 && <Cursor />}
         </div>
-        
+
         <div className="min-h-[1.2em]">
           {line2}
           {line2 && !line3 && <Cursor />}
         </div>
-        
-        <div className="min-h-[1.2em] whitespace-nowrap">
+
+        <div className="min-h-[1.2em]">
           <span>{line3}</span>
-          <span className="text-[#FF5F1F] font-thin">
-            {skillText}
+          <span className="block sm:inline whitespace-nowrap">
+            <span className="text-[#FF5F1F] font-thin">{skillText}</span>
+            {line3 && <Cursor />}
           </span>
-          {line3 && <Cursor />}
         </div>
       </div>
 
@@ -130,40 +134,38 @@ const Introduction = () => {
           <span className="font-mono xs:text-sm sm:text-sm md:text-md lg:text-sm text-white/80">
             Pronunciation
           </span>
-    <button
-      onClick={playPronunciation}
-      aria-label="Play pronunciation"
-      className="relative ml-3 flex items-center justify-center text-xl text-white cursor-pointer"
-    >
-      {/* Ripple ring */}
-      {isPlaying && (
-        <motion.span
-          className="absolute rounded-full border border-[#FF5F1F]"
-          initial={{ scale: 1, opacity: 0.6 }}
-          animate={{ scale: 2.4, opacity: 0 }}
-          transition={{
-            duration: 1.1,
-            repeat: Infinity,
-            ease: "easeOut",
-          }}
-          style={{
-            width: 32,
-            height: 32,
-          }}
-        />
-      )}
+          <button
+            onClick={playPronunciation}
+            aria-label="Play pronunciation"
+            className="relative ml-3 flex items-center justify-center text-xl text-white cursor-pointer"
+          >
+            {isPlaying && (
+              <motion.span
+                className="absolute rounded-full border border-[#FF5F1F]"
+                initial={{ scale: 1, opacity: 0.6 }}
+                animate={{ scale: 2.4, opacity: 0 }}
+                transition={{
+                  duration: 1.1,
+                  repeat: Infinity,
+                  ease: "easeOut",
+                }}
+                style={{
+                  width: 32,
+                  height: 32,
+                }}
+              />
+            )}
 
-      {/* Icon */}
-      <motion.span
-        animate={{
-          scale: isPlaying ? 1.25 : 1,
-          color: isPlaying ? "#FF5F1F" : "#ffffff",
-        }}
-        transition={{ duration: 0.25 }}
-      >
-        <FaVolumeUp />
-      </motion.span>
-    </button>
+            <motion.span
+              animate={{
+                scale: isPlaying ? 1.25 : 1,
+                color: isPlaying ? "#FF5F1F" : "#ffffff",
+              }}
+              transition={{ duration: 0.25 }}
+            >
+              <FaVolumeUp />
+            </motion.span>
+          </button>
         </div>
         <span className="font-thin text-2xl text-white block">
           /Ah: bi: soh: la/

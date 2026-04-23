@@ -9,14 +9,14 @@ import driveIcon from "../../../public/assets/icons/drive.svg";
 const Facilitation = () => {
     return (
         <div className="pt-8">
-            <div className="w-[90%] mx-auto">
+            <div className="w-full mx-auto">
                 <Header />
                 <main>
                     <div>
                         <Introduction />
-                        <p className="text-lg leading-8 text-gray-700 mb-16">I am a self taught design thinking facilitator with over a year of professional experience.</p>
+                        <p className="w-[90%] mx-auto text-lg leading-8 text-gray-700 mb-16">I am a self taught design thinking facilitator with over a year of professional experience.</p>
                     </div>
-                    <section className="grid gap-y-20 gap-x-[calc(3rem+5%)] md:grid-cols-[repeat(auto-fill,minmax(400px,1fr))]">
+                    <section className="mx-auto w-[90%] grid gap-y-20 gap-x-40 md:grid-cols-[repeat(auto-fill,minmax(400px,1fr))]">
                         <article className="md:min-w-96">
                             <header>
                                 <h2 className="text-2xl border-b-2 border-[hsl(15deg,100%,50%)] pb-3 mb-4">Orvalon Digital</h2>

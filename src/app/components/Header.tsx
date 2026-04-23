@@ -1,20 +1,39 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const pathname = usePathname();
+
+  // Framer Motion scroll tracking
+  const { scrollY } = useScroll();
+
+  /**
+   * Smart Scroll Logic: 
+   * If current scroll is greater than previous AND scrolled more than 150px, hide.
+   * If current scroll is less than previous, show.
+   */
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    if (latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
-  // Define which routes should have a light background (black text)
-  // Add your Spenditure route here (e.g., "/portfolio/spenditure")
-  const isLightPage = pathname.toLowerCase().includes("spenditure") || pathname.toLowerCase() === "/about";
+  const isLightPage = pathname.toLowerCase().includes("spenditure") 
+  || pathname.toLowerCase().includes("nithub-forms") 
+  || pathname.toLowerCase().includes("transtura") 
+  || pathname.toLowerCase() === "/about";
 
   const navLinks = [
     { name: "Resume", href: "/Resume" },
@@ -25,14 +44,24 @@ const Header = () => {
     { name: "Playground", href: "/playground" },
   ];
 
-  // Dynamic Styles
   const textColor = isLightPage ? "text-gray-600" : "text-gray-400";
   const activeTextColor = isLightPage ? "text-black" : "text-white";
   const logoTextColor = isLightPage ? "text-black" : "text-white";
   const contactBtnBg = isLightPage ? "bg-[#1a1a1a]" : "bg-[#782E14]";
 
   return (
-    <header className="font-space flex justify-between px-6 md:px-16 items-center pb-10 relative">
+    <motion.header 
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      /* Added fixed positioning so it can float over content */
+      className={`font-space fixed top-0 left-0 right-0 z-[100] flex justify-between px-6 md:px-16 items-center py-6 transition-colors duration-300 ${
+        isLightPage ? "bg-white/80 backdrop-blur-md" : "bg-transparent"
+      }`}
+    >
       <h1 
         className={`border-b-[3px] border-[#FF5F1F] inline-block sm:text-md lg:text-2xl font-bold transition-colors duration-300 ${logoTextColor}`}
       >
@@ -59,7 +88,6 @@ const Header = () => {
                 >
                   {link.name}
                 </Link>
-                {/* Active Indicator (Dot) */}
                 {isActive && (
                   <motion.span
                     layoutId="activeDot"
@@ -107,7 +135,7 @@ const Header = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 h-full w-[70%] bg-[#151515] hover:bg-[#FF5F1F] border-l border-white/10 p-10 pt-32 z-[55] shadow-2xl"
+              className="fixed top-0 right-0 h-full w-[70%] bg-[#151515] border-l border-white/10 p-10 pt-32 z-[55] shadow-2xl"
             >
               <ul className="flex flex-col gap-8 text-2xl text-gray-300">
                 {navLinks.map((link) => {
@@ -151,7 +179,7 @@ const Header = () => {
           </>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 };
 
