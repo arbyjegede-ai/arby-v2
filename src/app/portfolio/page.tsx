@@ -126,7 +126,7 @@ export default function PortfolioPage() {
     <main className="mx-auto py-8 mt-10 font-space min-h-screen relative">
       <Header />
 
-      <section className="flex flex-col lg:flex-row justify-between items-start gap-12 mx-16 mb-24 mt-16">
+      <section className="flex flex-col lg:flex-row justify-between items-start gap-12 mx-24 mb-24 mt-16">
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-normal text-white/80 leading-[1.1] max-w-4xl tracking-tight">
           Product designer with <span>5+ years</span> of experience crafting experiences,
           guiding teams, and building systems that work.

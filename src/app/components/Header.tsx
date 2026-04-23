@@ -57,13 +57,12 @@ const Header = () => {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
-      /* Added fixed positioning so it can float over content */
-      className={`font-space fixed top-0 left-0 right-0 z-[100] flex justify-between px-6 md:px-16 items-center py-6 transition-colors duration-300 ${
+      className={`w-[95%] mx-auto font-space fixed top-0 left-0 right-0 z-[100] flex justify-between px-6 md:px-16 items-center py-6 transition-colors duration-300 ${
         isLightPage ? "bg-white/80 backdrop-blur-md" : "bg-transparent"
       }`}
     >
       <h1 
-        className={`border-b-[3px] border-[#FF5F1F] inline-block sm:text-md lg:text-2xl font-bold transition-colors duration-300 ${logoTextColor}`}
+        className={`border-b-[3px] border-[#FF4C00] inline-block sm:text-md lg:text-2xl font-bold transition-colors duration-300 ${logoTextColor}`}
       >
         <Link href="/">Arby</Link>
       </h1>
@@ -82,7 +81,7 @@ const Header = () => {
                   href={link.href}
                   className={`transition-colors duration-300 font-medium ${
                     isActive 
-                      ? "text-[#FF5F1F]" 
+                      ? "text-[#FF4C00]" 
                       : `${textColor} hover:${activeTextColor}`
                   }`}
                 >
@@ -91,7 +90,7 @@ const Header = () => {
                 {isActive && (
                   <motion.span
                     layoutId="activeDot"
-                    className="absolute -bottom-3 w-1.5 h-1.5 bg-[#FF5F1F] rounded-full"
+                    className="absolute -bottom-3 w-1.5 h-1.5 bg-[#FF4C00] rounded-full"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -150,7 +149,7 @@ const Header = () => {
                         href={link.href}
                         onClick={toggleMenu}
                         className={`transition-colors duration-300 ${
-                          isActive ? "text-[#FF5F1F]" : "hover:text-white"
+                          isActive ? "text-[#FF4C00]" : "hover:text-white"
                         }`}
                       >
                         {link.name}
@@ -159,7 +158,7 @@ const Header = () => {
                       {isActive && (
                         <motion.span
                           layoutId="activeDotMobile"
-                          className="w-2 h-2 bg-[#FF5F1F] rounded-full"
+                          className="w-2 h-2 bg-[#FF4C00] rounded-full"
                         />
                       )}
                     </li>
@@ -168,7 +167,7 @@ const Header = () => {
                 <li className="pt-4">
                   <a
                     href="mailto:arby.jegede@gmail.com"
-                    className="text-[#FF5F1F] font-bold text-xl"
+                    className="text-[#FF4C00] font-bold text-xl"
                     onClick={toggleMenu}
                   >
                     Contact me

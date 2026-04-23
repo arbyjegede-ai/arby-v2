@@ -162,12 +162,13 @@ const Introduction = () => {
                 color: isPlaying ? "#FF5F1F" : "#ffffff",
               }}
               transition={{ duration: 0.25 }}
+              className="absolute ml-2"
             >
               <FaVolumeUp />
             </motion.span>
           </button>
         </div>
-        <span className="font-thin text-2xl text-white block">
+        <span className="absolute font-thin text-2xl text-white block">
           /Ah: bi: soh: la/
         </span>
       </div>
